@@ -77,6 +77,7 @@
     }
   }
 
+  //creates getRandomColor function
   function getRandomColor() {
     //generates random number between 1 &
     //the length of backgroundColors array &
