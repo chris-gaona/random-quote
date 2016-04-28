@@ -2,7 +2,7 @@
   'use strict';
 
   //adds quotes variable to contain json object of 7 quotes
-  var quotes = {[
+  var quotes = [
     {
       quote: 'Some of the worst mistakes of my life have been haircuts.',
       source: 'Jim Morrison',
@@ -52,7 +52,15 @@
       year: '2004',
       category: ['life']
     },
-  ]};
+  ];
+
+  //creates getRandomQuote function
+  function getRandomQuote() {
+    //return random number between 1 & the length of quotes array
+    return Math.floor(Math.random() * quotes.length) + 1;
+  }
+
+  console.log(quotes[getRandomQuote()]);
 
   // event listener to respond to clicks on the page
   // when user clicks anywhere on the page, the "makeQuote" function is called
