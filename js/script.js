@@ -9,8 +9,7 @@
       citation: 'No One Here Gets Out Alive',
       year: '1950',
       shares: '25',
-      category: ['life', 'hair'],
-      color: '#ff4500'
+      category: ['life', 'hair']
     },
     {
       quote: 'Gratitude is not only the greatest of virtues, but the parent of all others.',
@@ -18,8 +17,7 @@
       citation: 'Pro Plancio',
       year: '54 B.C.',
       shares: '250',
-      category: ['gratitude', 'thankfulness'],
-      color: '#655385'
+      category: ['gratitude', 'thankfulness']
     },
     {
       quote: 'Don\'t cry because it\'s over, smile because it happened.',
@@ -27,8 +25,7 @@
       citation: '',
       year: '1925',
       shares: '12',
-      category: ['drinking', 'funny'],
-      color: '#7c9e37'
+      category: ['drinking', 'funny']
     },
     {
       quote: 'Be a first rate version of yourself, not a second rate version of someone else.',
@@ -36,8 +33,7 @@
       citation: '',
       year: '',
       shares: '137',
-      category: ['life', 'person'],
-      color: '#836fff'
+      category: ['life', 'person']
     },
     {
       quote: 'I\'ve always thought that a big laugh is a really loud noise from the soul saying, "Ain\'t that the truth."',
@@ -45,8 +41,7 @@
       citation: 'Victory of the Spirit',
       year: '',
       shares: '4',
-      category: ['laugh', 'life'],
-      color: '#63b8ff'
+      category: ['laugh', 'life']
     },
     {
       quote: 'You can go a long way with a smile. You can go a lot farther with a smile and a gun.',
@@ -54,8 +49,7 @@
       citation: '',
       year: '1935',
       shares: '95',
-      category: ['life', 'funny'],
-      color: 'orange'
+      category: ['life', 'funny']
     },
     {
       quote: 'Put your whole self into it, and you will find your true voice. Hold back and you won\'t. It\'s that simple.',
@@ -63,10 +57,22 @@
       citation: 'How To Be Creative: 25',
       year: '2004',
       shares: '64',
-      category: ['life', 'voice'],
-      color: 'blue'
+      category: ['life', 'voice']
     },
   ];
+
+  var backgroundColors = ['#ff4500', '#655385', '#7c9e37', '#836fff', '#63b8ff', 'orange', 'blue'];
+
+  function getRandomColor() {
+    //generates random number between 1 &
+    //the length of quotes array &
+    //stores it in randomNumber variable
+    var randomColorNumber = Math.floor(Math.random() * backgroundColors.length);
+
+    //returns proper object from backgroundColors array
+    //using randomColorNumber
+    return backgroundColors[randomColorNumber];
+  }
 
   //creates a clone of quotes array to manipulate
   //without hurting the original array
@@ -108,7 +114,11 @@
         //calls getRandomQuote function &
         //stores the returned quote object in quote variable
         getQuote = getRandomQuote(),
-        quote = getQuote[0];
+        //to access object from getQuote you must do the following
+        quote = getQuote[0],
+        //call getRandomColor function &
+        //stores returned color in color variable
+        color = getRandomColor();
 
     //calls clearInterval function to clear interval timer
     //and then restarts the timer immediately
@@ -131,9 +141,9 @@
       string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span> | <a href="#" class="category">' + quote.category[0] + '</a><a href="#" class="category">' + quote.category[1] + '</a> | <a href="#" class="shares">Shares: ' + quote.shares + '</a></p>';
     }
 
-    //sets background color of body tag to color
-    //specified key/value pairs in array above
-    document.body.style.background = quote.color;
+    //sets background color of body tag to
+    //random color taken from backgroundColors array
+    document.body.style.background = color;
 
     //add string from if statement to innerHTML of quote-box
     document.getElementById('quote-box').innerHTML = string;
