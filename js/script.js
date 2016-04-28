@@ -107,12 +107,12 @@
   //creates getRandomQuote function
   function getRandomQuote() {
     //calls resetQuotes function to re-clone quotes array
-    //if usedQuotes array is empty
+    //when usedQuotes array is empty
     resetQuotes();
 
     //calls resetColors function to re-clone
     //backgroundColors array
-    //if usedColors array is empty
+    //when usedColors array is empty
     resetColors();
 
     //generates random number between 1 &
@@ -165,7 +165,7 @@
     //random color taken from backgroundColors array
     document.body.style.background = color;
 
-    //add string from if statement to innerHTML of quote-box
+    //add string from if statement above to innerHTML of quote-box
     document.getElementById('quote-box').innerHTML = string;
   }
 
@@ -182,7 +182,7 @@
 
     //immediately restarts timer after timer is cleared
     //creates better UX so if user clicks loadQuote button
-    //& interval is at end it does not changed to another quote
+    //& interval is at end it does not change to another quote
     //until another 10 seconds have passed
     intervalTimer = window.setInterval(printQuote, 10000);
   }
