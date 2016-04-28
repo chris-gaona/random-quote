@@ -65,8 +65,8 @@
 
   function getRandomColor() {
     //generates random number between 1 &
-    //the length of quotes array &
-    //stores it in randomNumber variable
+    //the length of backgroundColors array &
+    //stores it in randomColorNumber variable
     var randomColorNumber = Math.floor(Math.random() * backgroundColors.length);
 
     //returns proper object from backgroundColors array
@@ -105,18 +105,16 @@
     return usedQuotes.splice(randomNumber, 1);
   }
 
-  // console.log(getRandomQuote());
-
   //creates printQuote function
   function printQuote() {
-    //creates variables
+    //define variables
     var string,
         //calls getRandomQuote function &
-        //stores the returned quote object in quote variable
+        //stores the returned quote object in getQuote variable
         getQuote = getRandomQuote(),
         //to access object from getQuote you must do the following
         quote = getQuote[0],
-        //call getRandomColor function &
+        //calls getRandomColor function &
         //stores returned color in color variable
         color = getRandomColor();
 
@@ -151,7 +149,7 @@
 
   //creates an interval to change quotes after
   //a certain amount of time has passed
-  //in this case 5000 milliseconds or 5 seconds
+  //in this case 10000 milliseconds or 10 seconds
   var intervalTimer = window.setInterval(printQuote, 10000);
 
   //creates clearInterval function
@@ -163,7 +161,7 @@
     //immediately restarts timer after timer is cleared
     //creates better UX so if user clicks loadQuote button
     //& interval is at end it does not changed to another quote
-    //until another 5 seconds have passed
+    //until another 10 seconds have passed
     intervalTimer = window.setInterval(printQuote, 10000);
   }
 
