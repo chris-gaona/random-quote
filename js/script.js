@@ -70,19 +70,20 @@
   function printQuote() {
     //calls getRandomQuote function &
     //stores the returned quote object in quote variable
-    var quote = getRandomQuote();
+    var string,
+        quote = getRandomQuote();
 
     //if there is no year value do this
     if (quote.year === '') {
-      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category + '</span></p>';
 
     //else if there is no citation value do this
     } else if (quote.citation === '') {
-      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
 
     //else show all the values
     } else {
-      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
     }
 
     //add string from if statement to innerHTML of quote-box
