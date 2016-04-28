@@ -3,6 +3,7 @@ body {
   background-color: #36b55c;
   color: white;
   font-family: 'Playfair Display', serif;
+  text-shadow: 0 1px 1px #000;
 }
 #quote-box {
   position: absolute;
@@ -67,7 +68,7 @@ body {
   border-radius: 4px;
   border: 2px solid #fff;
   color: #fff;
-  background-color: #36b55c;
+  background-color: transparent;
   padding: 15px 0;
   transition: .5s ;
 }
@@ -82,9 +83,20 @@ body {
   background-color: #fff;
   padding: 5px;
   color: #666;
-  border-radius: 5px;
+  border-radius: 2px;
   margin: 0 5px;
   font-size: 12px;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+.shares {
+  font-size: 14px;
+  padding: 5px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 2px;
 }
 
 @media (max-width: 420px) {

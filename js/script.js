@@ -10,7 +10,7 @@
       year: '1950',
       shares: '25',
       category: ['life', 'hair'],
-      color: 'red'
+      color: '#ff4500'
     },
     {
       quote: 'Gratitude is not only the greatest of virtues, but the parent of all others.',
@@ -19,7 +19,7 @@
       year: '54 B.C.',
       shares: '250',
       category: ['gratitude', 'thankfulness'],
-      color: 'gold'
+      color: '#a7963a'
     },
     {
       quote: 'Don\'t cry because it\'s over, smile because it happened.',
@@ -28,7 +28,7 @@
       year: '1925',
       shares: '12',
       category: ['drinking', 'funny'],
-      color: 'green'
+      color: '#7c9e37'
     },
     {
       quote: 'Be a first rate version of yourself, not a second rate version of someone else.',
@@ -37,7 +37,7 @@
       year: '',
       shares: '137',
       category: ['life', 'person'],
-      color: 'purple'
+      color: '#836fff'
     },
     {
       quote: 'I\'ve always thought that a big laugh is a really loud noise from the soul saying, "Ain\'t that the truth."',
@@ -46,7 +46,7 @@
       year: '',
       shares: '4',
       category: ['laugh', 'life'],
-      color: 'pink'
+      color: '#63b8ff'
     },
     {
       quote: 'You can go a long way with a smile. You can go a lot farther with a smile and a gun.',
@@ -110,21 +110,22 @@
         getQuote = getRandomQuote(),
         quote = getQuote[0];
 
-    //if there is no year value do this
-    if (quote.year === '') {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
+
+    //if there is no year & no citation do this
+    if (quote.year === '' && quote.citation === ''){
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + ' | <a href="#" class="category">' + quote.category[0] + '</a><a href="#" class="category">' + quote.category[1] + '</a> | <a href="#" class="shares">Shares: ' + quote.shares + '</a></p>';
+
+    //else if there is no year value do this
+    } else if (quote.year === '') {
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span> | <a href="#" class="category">' + quote.category[0] + '</a><a href="#" class="category">' + quote.category[1] + '</a> | <a href="#" class="shares">Shares: ' + quote.shares + '</a></p>';
 
     //else if there is no citation value do this
     } else if (quote.citation === '') {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
-
-    //else if there is no year & no citation do this
-    } else if (quote.year === '' && quote.citation === ''){
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span> | <a href="#" class="category">' + quote.category[0] + '</a><a href="#" class="category">' + quote.category[1] + '</a> | <a href="#" class="shares">Shares: ' + quote.shares + '</a></p>';
 
     //else show all the values
     } else {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span> | <a href="#" class="category">' + quote.category[0] + '</a><a href="#" class="category">' + quote.category[1] + '</a> | <a href="#" class="shares">Shares: ' + quote.shares + '</a></p>';
     }
 
     //sets background color of body tag to color
@@ -138,7 +139,7 @@
   //creates an interval to change quotes after
   //a certain amount of time has passed
   //in this case 5000 milliseconds or 5 seconds
-  // var intervalTimer = window.setInterval(printQuote, 5000);
+  var intervalTimer = window.setInterval(printQuote, 5000);
 
   //could use the following clearInterval method
   //to stop the interval method above by attaching
