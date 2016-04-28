@@ -61,17 +61,34 @@
     },
   ];
 
+  //adds backgroundColors variable to hold 6 different colors
   var backgroundColors = ['#ff4500', '#655385', '#7c9e37', '#836fff', '#63b8ff', 'orange', 'blue'];
+
+  //creates a clone of backgroundColors array to manipulate
+  //without hurting the original array
+  var usedColors = backgroundColors.slice(0);
+
+  //creates resetColors function
+  function resetColors() {
+    //if usedColors has 0 objects in it...
+    if (usedColors.length === 0) {
+      //then create a new clone of backgroundColors array to use
+      usedColors = backgroundColors.slice(0);
+    }
+  }
 
   function getRandomColor() {
     //generates random number between 1 &
     //the length of backgroundColors array &
     //stores it in randomColorNumber variable
-    var randomColorNumber = Math.floor(Math.random() * backgroundColors.length);
+    var randomColorNumber = Math.floor(Math.random() * usedColors.length);
 
     //returns proper object from backgroundColors array
-    //using randomColorNumber
-    return backgroundColors[randomColorNumber];
+    //using randomColorNumber...deletes it from
+    //usedColors array
+    //cuz I'll be using it to make sure same color is not
+    //shown more than once in the same rotation
+    return usedColors.splice(randomColorNumber, 1);
   }
 
   //creates a clone of quotes array to manipulate
@@ -92,6 +109,11 @@
     //calls resetQuotes function to re-clone quotes array
     //if usedQuotes array is empty
     resetQuotes();
+
+    //calls resetColors function to re-clone
+    //backgroundColors array
+    //if usedColors array is empty
+    resetColors();
 
     //generates random number between 1 &
     //the length of quotes array &
