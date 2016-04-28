@@ -142,15 +142,19 @@
   //creates an interval to change quotes after
   //a certain amount of time has passed
   //in this case 5000 milliseconds or 5 seconds
-  var intervalTimer = window.setInterval(printQuote, 5000);
+  var intervalTimer = window.setInterval(printQuote, 10000);
 
-  //could use the following clearInterval method
-  //to stop the interval method above by attaching
-  //it to a click event
+  //creates clearInterval function
   function clearInterval() {
+    //clears the interval created by intervalTimer
+    //is only called when loadQuote button is clicked
     window.clearInterval(intervalTimer);
 
-    intervalTimer = window.setInterval(printQuote, 5000);
+    //immediately restarts timer after timer is cleared
+    //creates better UX so if user clicks loadQuote button
+    //& interval is at end it does not changed to another quote
+    //until another 5 seconds have passed
+    intervalTimer = window.setInterval(printQuote, 10000);
   }
 
   // event listener to respond to clicks on the page
