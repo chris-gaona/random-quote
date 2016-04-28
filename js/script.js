@@ -19,7 +19,7 @@
       year: '54 B.C.',
       shares: '250',
       category: ['gratitude', 'thankfulness'],
-      color: '#a7963a'
+      color: '#655385'
     },
     {
       quote: 'Don\'t cry because it\'s over, smile because it happened.',
@@ -110,6 +110,9 @@
         getQuote = getRandomQuote(),
         quote = getQuote[0];
 
+    //calls clearInterval function to clear interval timer
+    //and then restarts the timer immediately
+    clearInterval();
 
     //if there is no year & no citation do this
     if (quote.year === '' && quote.citation === ''){
@@ -144,7 +147,11 @@
   //could use the following clearInterval method
   //to stop the interval method above by attaching
   //it to a click event
-  // window.clearInterval(intervalTimer);
+  function clearInterval() {
+    window.clearInterval(intervalTimer);
+
+    intervalTimer = window.setInterval(printQuote, 5000);
+  }
 
   // event listener to respond to clicks on the page
   // when user clicks anywhere on the page, the "makeQuote" function is called
