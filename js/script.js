@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  //adds quotes variable to contain json object of 7 quotes
+  //adds quotes variable to contain array of 7 quote objects
   var quotes = [
     {
       quote: 'Some of the worst mistakes of my life have been haircuts.',
@@ -68,17 +68,38 @@
     },
   ];
 
+  //creates a clone of quotes array to manipulate
+  //without hurting the original array
+  var usedQuotes = quotes.slice(0);
+
+  //creates resetQuotes function
+  function resetQuotes() {
+    //if usedQuotes has 0 objects in it...
+    if (usedQuotes.length === 0) {
+      //then create a new clone of quotes array to use
+      usedQuotes = quotes.slice(0);
+    }
+  }
+
   //creates getRandomQuote function
   function getRandomQuote() {
+    //calls resetQuotes function to re-clone quotes array
+    //if usedQuotes array is empty
+    resetQuotes();
+
     //generates random number between 1 &
     //the length of quotes array &
     //stores it in randomNumber variable
-    var randomNumber = Math.floor(Math.random() * quotes.length);
+    var randomNumber = Math.floor(Math.random() * usedQuotes.length);
 
     //returns proper object from quotes array
-    //using randomNumber
-    return quotes[randomNumber];
+    //using randomNumber...deletes it from usedQuotes array
+    //cuz I'll be using it to make sure same quote is not
+    //shown more than once in the same rotation
+    return usedQuotes.splice(randomNumber, 1);
   }
+
+  // console.log(getRandomQuote());
 
   //creates printQuote function
   function printQuote() {
@@ -86,9 +107,8 @@
     var string,
         //calls getRandomQuote function &
         //stores the returned quote object in quote variable
-        quote = getRandomQuote(),
-        //creates empty array to hold used quotes
-        usedQuotes = [];
+        getQuote = getRandomQuote(),
+        quote = getQuote[0];
 
     //if there is no year value do this
     if (quote.year === '') {
