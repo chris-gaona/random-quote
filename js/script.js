@@ -18,10 +18,10 @@
       category: ['gratitude', 'thankfulness', 'life']
     },
     {
-      quote: 'Electricity is actually made up of extremely tiny particles called electrons, that you cannot see with the naked eye unless you have been drinking.',
-      source: 'Dave Barry',
-      citation: 'The Taming of the Screw',
-      year: '1972',
+      quote: 'Don\'t cry because it\'s over, smile because it happened.',
+      source: 'Dr. Seuss',
+      citation: '',
+      year: '1925',
       category: ['drinking', 'funny']
     },
     {
@@ -48,7 +48,7 @@
     {
       quote: 'Put your whole self into it, and you will find your true voice. Hold back and you won\'t. It\'s that simple.',
       source: 'Hugh Macleod',
-      citation: 'How To Be Creative: 25. You have to find your own schtick',
+      citation: 'How To Be Creative: 25',
       year: '2004',
       category: ['life']
     },
@@ -57,10 +57,28 @@
   //creates getRandomQuote function
   function getRandomQuote() {
     //return random number between 1 & the length of quotes array
-    return Math.floor(Math.random() * quotes.length) + 1;
+    var randomNumber = Math.floor(Math.random() * quotes.length);
+
+    console.log(randomNumber);
+
+    return quotes[randomNumber];
   }
 
-  console.log(quotes[getRandomQuote()]);
+  // console.log(quotes[getRandomQuote()]);
+
+  function printQuote() {
+    var quote = getRandomQuote();
+
+    if (quote.year === '') {
+      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category + '</span></p>';
+    } else if (quote.citation === '') {
+      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+    } else {
+      var string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+    }
+
+    document.getElementById('quote-box').innerHTML = string;
+  }
 
   // event listener to respond to clicks on the page
   // when user clicks anywhere on the page, the "makeQuote" function is called
