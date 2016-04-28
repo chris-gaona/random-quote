@@ -19,7 +19,7 @@
       year: '54 B.C.',
       shares: '250',
       category: ['gratitude', 'thankfulness', 'life'],
-      color: 'yellow'
+      color: 'gold'
     },
     {
       quote: 'Don\'t cry because it\'s over, smile because it happened.',
@@ -100,11 +100,23 @@
       string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
     }
 
+    //sets background color of body tag to color
+    //specified key/value pairs in array above
     document.body.style.background = quote.color;
 
     //add string from if statement to innerHTML of quote-box
     document.getElementById('quote-box').innerHTML = string;
   }
+
+  //creates an interval to change quotes after
+  //a certain amount of time has passed
+  //in this case 5000 milliseconds or 5 seconds
+  var intervalTimer = window.setInterval(printQuote, 5000);
+
+  //could use the following clearInterval method
+  //to stop the interval method above by attaching
+  //it to a click event
+  // window.clearInterval(intervalTimer);
 
   // event listener to respond to clicks on the page
   // when user clicks anywhere on the page, the "makeQuote" function is called
