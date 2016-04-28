@@ -18,7 +18,7 @@ body {
   line-height: 1.1;
   position: relative;
   margin: 0;
-  } 
+  }
 .quote:before, .quote:after {
   font-size: 6rem;
   line-height: 2.5rem;
@@ -76,6 +76,15 @@ body {
 }
 #loadQuote:focus {
   outline: none;
+}
+
+.category {
+  background-color: #fff;
+  padding: 5px;
+  color: #666;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-size: 12px;
 }
 
 @media (max-width: 420px) {

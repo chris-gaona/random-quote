@@ -18,7 +18,7 @@
       citation: 'Pro Plancio',
       year: '54 B.C.',
       shares: '250',
-      category: ['gratitude', 'thankfulness', 'life'],
+      category: ['gratitude', 'thankfulness'],
       color: 'gold'
     },
     {
@@ -36,7 +36,7 @@
       citation: '',
       year: '',
       shares: '137',
-      category: ['life'],
+      category: ['life', 'person'],
       color: 'purple'
     },
     {
@@ -45,7 +45,7 @@
       citation: 'Victory of the Spirit',
       year: '',
       shares: '4',
-      category: ['laugh', 'life', 'funny'],
+      category: ['laugh', 'life'],
       color: 'pink'
     },
     {
@@ -63,7 +63,7 @@
       citation: 'How To Be Creative: 25',
       year: '2004',
       shares: '64',
-      category: ['life'],
+      category: ['life', 'voice'],
       color: 'blue'
     },
   ];
@@ -82,22 +82,29 @@
 
   //creates printQuote function
   function printQuote() {
-    //calls getRandomQuote function &
-    //stores the returned quote object in quote variable
+    //creates variables
     var string,
-        quote = getRandomQuote();
+        //calls getRandomQuote function &
+        //stores the returned quote object in quote variable
+        quote = getRandomQuote(),
+        //creates empty array to hold used quotes
+        usedQuotes = [];
 
     //if there is no year value do this
     if (quote.year === '') {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '<span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
 
     //else if there is no citation value do this
     } else if (quote.citation === '') {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
+
+    //else if there is no year & no citation do this
+    } else if (quote.year === '' && quote.citation === ''){
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
 
     //else show all the values
     } else {
-      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category + '</span></p>';
+      string = '<p class="quote">' + quote.quote + '</p> <p class="source">' + quote.source + '<span class="citation">' + quote.citation + '</span><span class="year">' + quote.year + '</span><span class="category">' + quote.category[0] + '</span><span class="category">' + quote.category[1] + '</span></p>';
     }
 
     //sets background color of body tag to color
@@ -111,7 +118,7 @@
   //creates an interval to change quotes after
   //a certain amount of time has passed
   //in this case 5000 milliseconds or 5 seconds
-  var intervalTimer = window.setInterval(printQuote, 5000);
+  // var intervalTimer = window.setInterval(printQuote, 5000);
 
   //could use the following clearInterval method
   //to stop the interval method above by attaching
